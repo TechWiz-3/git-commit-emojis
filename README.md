@@ -1,9 +1,10 @@
 # Git Commit Emojis
 
-![Image](https://img.shields.io/github/license/TechWiz-3/git-commit-emojis?color=blue&label=LICENSE&logo=gnu&logoColor=blue&style=flat-square)
-![Image](https://img.shields.io/badge/PYTHON-3.9-informational?style=flat-square&logo=python&logoColor=yellow)
-![Image](https://img.shields.io/github/commit-activity/m/TechWiz-3/git-commit-emojis?color=yellowgreen&logo=git&style=flat-square&label=COMMIT%20ACTIVITY)
-![Image](https://img.shields.io/github/stars/TechWiz-3/git-commit-emojis?color=green&label=STARS&style=flat-square)
+![Image](https://img.shields.io/github/license/TechWiz-3/git-commit-emojis?color=blue&label=license&logo=gnu&logoColor=blue&style=flat-square)
+![Image](https://img.shields.io/badge/python-3.9-informational?style=flat-square&logo=python&logoColor=yellow)
+![Image](https://img.shields.io/github/commit-activity/m/TechWiz-3/git-commit-emojis?color=yellowgreen&logo=git&style=flat-square&)
+![Image](https://img.shields.io/github/stars/TechWiz-3/git-commit-emojis?color=green&label=STARS&style=flat-square)  
+
 ![Image](https://img.shields.io/github/issues/TechWiz-3/git-commit-emojis?color=red&label=ISSUES&style=flat-square)
 ![Image](https://img.shields.io/github/issues-pr/TechWiz-3/git-commit-emojis?color=blueviolet&label=PULL%20REQUESTS&style=flat-square)
 
