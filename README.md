@@ -28,5 +28,22 @@ Here are the emoji guides mentioned above, they are all great and this project w
 
 ## Label Guide
 ### Select Menu Options
+Usage:  
+```
+commit -m "your commit message (with or without quotes)"
+```
+
+![Image](./screenshots/commit_select_menu.png)  
 
 ### Shorcut Options:
+Usage:  
+```
+commit -sh <shortcut>
+```
+Shortcuts:  
+
+ty     commit message defaults to: ✏️ FIX TYPO  
+
+cl     commit message defaults to: 🧹 CLEAN UP  
+
+in     commit message defaults to: 🎉 INITIAL COMMIT  
