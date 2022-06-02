@@ -28,9 +28,10 @@ def help():
         "\n\n"\
         "       -sh <shortcut>      puts the commit message for you as the value of 'shortcut'"\
         "\n\n"\
-        "Shortcuts:\n\nty     commit message defaults to: ✏️ FIX TYPO\n\ncl
-        commit message defaults to: 🧹 CLEAN UP\n\nin       commit message
-        defaults to: 🎉 INITIAL COMMIT\n"\
+        "Shortcuts:\n\n"\
+        "ty     commit message defaults to: ✏️ FIX TYPO\n\n"\
+        "cl     commit message defaults to: 🧹 CLEAN UP\n\n"\
+        "in     commit message defaults to: 🎉 INITIAL COMMIT\n"\
         "\n\n"
     )
 
@@ -67,8 +68,7 @@ def get_opts():
                 elif shortcut == "cl" or shortcut == "clean":
                     commit_message = "🧹 CLEAN UP"
                     return "shortcut", commit_message
-                elif shortcut = "in" or shorcut = "init" or shortcut =
-                "initial":
+                elif shortcut == "in" or shorcut == "init" or shortcut == "initial":
                     commit_message = "🎉 INITIAL COMMIT"
                     return "shortcut", commit_message
                 else:
