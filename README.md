@@ -52,4 +52,4 @@ Shortcuts:
 
 `cl`     commit message defaults to: `🧹 CLEAN UP`  
 
-`in`     commit message defaults to: 🎉 INITIAL COMMIT  
+`in`     commit message defaults to: `🎉 INITIAL COMMIT`  
