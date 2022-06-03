@@ -35,6 +35,11 @@ commit -m "your commit message (with or without quotes)"
 ```
 
 ![Image](./screenshots/commit_select_menu.png)  
+👌 Improvement = `👌 IMPROVE: <commit message>`  
+📦 Addition = `📦 NEW: <commit message>`  
+📖 Documentation = `📖 DOC: <commit message>`  
+🐛 Bug-fix = `🐛 FIX: <commit message>`  
+🔖 Version-tag = `🔖 <commit message>`  
 
 ### Shorcut Options:
 Usage:  
@@ -43,8 +48,8 @@ commit -sh <shortcut>
 ```
 Shortcuts:  
 
-ty     commit message defaults to: ✏️ FIX TYPO  
+`ty`     commit message defaults to: ✏️ FIX TYPO  
 
-cl     commit message defaults to: 🧹 CLEAN UP  
+`cl`     commit message defaults to: 🧹 CLEAN UP  
 
-in     commit message defaults to: 🎉 INITIAL COMMIT  
+`in`     commit message defaults to: 🎉 INITIAL COMMIT  
