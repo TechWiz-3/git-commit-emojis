@@ -48,8 +48,8 @@ commit -sh <shortcut>
 ```
 Shortcuts:  
 
-`ty`     commit message defaults to: ✏️ FIX TYPO  
+`ty`     commit message defaults to: `✏️ FIX TYPO`  
 
-`cl`     commit message defaults to: 🧹 CLEAN UP  
+`cl`     commit message defaults to: `🧹 CLEAN UP`  
 
 `in`     commit message defaults to: 🎉 INITIAL COMMIT  
