@@ -16,7 +16,7 @@ We all like a bit of extra color and spice to our boring old commit messages, th
 Since the project will continue to be updated and isn't on pypi, you can clone the repository and create a CLI command linking to the cloned repository  
 I am currently investigating the best way to allow this tool to be easily installed and used on all platforms. Meanwhile if you can help, please open an issue.
 
-*****Mac OS**  
+**Mac OS**  
 ```sh
 git clone https://github.com/TechWiz-3/git-commit-emojis.git
 cp commit /usr/local/bin/<name you wish to give the command (I recommend gc or commit)>
