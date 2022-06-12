@@ -15,7 +15,7 @@ We all like a bit of extra color and spice to our boring old commit messages, th
 ## Installation
 Planning on putting the project on pypi and scoop soon  
 
-**Simple
+**Simple**
 ```sh
 # <commit> = name you wish to give the command (I recommend gc or commit)
 git clone https://github.com/TechWiz-3/git-commit-emojis.git
