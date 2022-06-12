@@ -13,14 +13,14 @@ A simple cross platform python script that automates easy labelling of git commi
 We all like a bit of extra color and spice to our boring old commit messages, this not only adds that but also adds information about the commit.
 
 ## Installation
-Since the project will continue to be updated and isn't on pypi, you can clone the repository and create a CLI command linking to the cloned repository  
-I am currently investigating the best way to allow this tool to be easily installed and used on all platforms. Meanwhile if you can help, please open an issue.
+Planning on putting the project on pypi and scoop soon  
 
-**Mac OS**  
+**Simple 
 ```sh
+# <commit> = name you wish to give the command (I recommend gc or commit)
 git clone https://github.com/TechWiz-3/git-commit-emojis.git
-cp commit /usr/local/bin/<name you wish to give the command (I recommend gc or commit)>
-chmod +x /usr/local/bin/<name>
+cp commit /usr/local/bin/<commit>
+chmod +x /usr/local/bin/<commit>
 ```
 
 ## Usage
