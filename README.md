@@ -27,7 +27,8 @@ chmod +x /usr/local/bin/<commit>
 
 ## The Story
 So I noticed that [this](https://github.com/msaaddev) programmer's commits always had really neat looking labels with emojis. I searched it up and found a number of repositories or gists talking about emojis for various sorts of commits.  
-However, I couldn't find ANY projects which automated the experience. Weird, right? [One](https://github.com/ahmadawais/Emoji-Log) project had a way to somewhat automate the experience by adding a function for each commit type. While a nice solution, I don't want to have to memorise the abbreviations/commands type of commit. Well no more, with this project, I can now label all my commits in mere seconds without having to memorise anything.
+However, I couldn't find ANY projects which automated the experience. Weird, right? [One](https://github.com/ahmadawais/Emoji-Log) project had a way to somewhat automate the experience by adding a function for each commit type. While a nice solution, I don't want to have to memorise the abbreviations/commands type of commit. Well no more, with this project, I can now label all my commits in mere seconds without having to memorise anything.  
+Later, I discovered gitmoji-cli, a very neat, if complicated implementation. Gitmoji however, misses one thing, it only adds emojis, but it provides no guide or automation for labelling commits with descriptive text like emoji log does 
 
 Here are the emoji guides mentioned above, they are all great and this project wouldn't be possible without them so be sure to check them out:  
 * [Git command emoji gist](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)  
