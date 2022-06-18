@@ -7,6 +7,10 @@ assignees: ''
 
 ---
 
+**Which select menu:**
+
+Standard/strict/extra
+
 **Option name:**
 
 **What does the option label the git commit:**
