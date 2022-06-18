@@ -8,10 +8,12 @@ from sys import argv  # import cli arguement function
 from sys import exit  # import exit function
 from os import system
 
+
+BOLD = "\u001b[1m"
+RESET = "\033[0m"
+
 def help():
     """Help command"""
-    BOLD = "\u001b[1m"
-    RESET = "\033[0m"
     print(
         "\n"
         "Git emoji/labeling tool created by Zac the Wise"
@@ -36,6 +38,7 @@ def help():
         "ty     commit message defaults to: ✏️ FIX TYPO\n"
         "cl     commit message defaults to: 🧹 CLEAN UP\n"
         "in     commit message defaults to: 🎉 INITIAL COMMIT\n"
+        "ln     commit message defaults to: 🚨 FIX LINT WARNINGS\n"
         "\n\n"
     )
 
@@ -72,8 +75,11 @@ def get_opts():
                 elif shortcut == "cl" or shortcut == "clean":
                     commit_message = "🧹 CLEAN UP"
                     return "shortcut", commit_message
-                elif shortcut == "in" or shorcut == "init" or shortcut == "initial":
+                elif shortcut == "in" or shortcut == "init" or shortcut == "initial":
                     commit_message = "🎉 INITIAL COMMIT"
+                    return "shortcut", commit_message
+                elif shortcut in ("ln", "lint", "linter"):
+                    commit_message = "🚨 FIX LINT WARNINGS"
                     return "shortcut", commit_message
                 else:
                     return "error", "Unrecognized shortcut usage"
@@ -110,6 +116,9 @@ def get_opts():
             # ensure the message isn't empty or non-existant
             # assign commit_message
             # return "message only", commit_message
+        elif arg in ("-sa", "--show-all", "--showall"):
+            show_all()
+            return exit()
         elif arg == "-h" or arg == "--help":  # help option
             help()  # display help message
             return exit()  # stop the rest of the program from running
@@ -144,6 +153,12 @@ def select_menu():
 def second_menu():
     """Displays another select menu with more options that are used less often"""
     pass
+    options = [
+        "🔧 Configuration files",
+        "🚚 Move files",
+        "🙈 Ignore files",
+        "❌ Remove files"
+    ]
 
 
 def strict_menu():
@@ -176,6 +191,34 @@ def strict_menu():
         exit()
     return commit_label
 
+
+def show_all():
+    """Displays a list of all select menu options and their message results"""
+    print("")
+    print(f"{BOLD}Standard select menu:{RESET}")
+    print("")
+    print("1) 👌 Improvement        👌 IMPROVE: <message>")
+    print("2) 📦 Addition           📦 NEW: <message>")
+    print("3) 📖 Documentation      📖 DOC: <message>")
+    print("4) 🐛 Bug-fix            🐛 FIX <message>")
+    print("5) 🔖 Version-tag        🔖 <message>")
+    print("")
+    print("")
+    print(f"{BOLD}Extra select menu{RESET}")
+    print("")
+    print("")
+    print(f"{BOLD}Strict select menu (emoji-log){RESET}")
+    print("")
+    print("1) 👌 Improvement        👌 IMPROVE: <message>")
+    print("2) 📦 Addition           📦 NEW: <message>")
+    print("3) 📖 Documentation      📖 DOC: <message>")
+    print("4) 🐛 Bug-fix            🐛 FIX <message>")
+    print("5) 🚀 Release            🚀 RELEASE: <message>")
+    print("6) 🤖 Test               🤖 TEST: <message>")
+    print("7) ‼️  Breaking           ‼️ BREAKING: <message>")
+    print("")
+
+
 if __name__ == "__main__":
 
     options = get_opts()
@@ -196,4 +239,3 @@ if __name__ == "__main__":
 
         elif typ == "error":
             print(f"Error occured: {msg}")
-
