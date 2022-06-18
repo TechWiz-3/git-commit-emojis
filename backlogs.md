@@ -1,6 +1,6 @@
-- []Add a secondary select list for less common usage with the switch -e or --extra  
-- [] Provide an easy subcommand that allows for editing a commit message  
-- [] Allow users to alter their commit messages and emojis for both the select menus and the shortcuts through a toml file  
+- [ ] Add a secondary select list for less common usage with the switch -e or --extra  
+- [ ] Provide an easy subcommand that allows for editing a commit message  
+- [ ] Allow users to alter their commit messages and emojis for both the select menus and the shortcuts through a toml file  
 - [x] Command that shows all select menu options and their label results 
-- [] Use something with more control than the system() method for executing the commit
-- [] Add the project to PyPi and Scoop
+- [ ] Use something with more control than the system() method for executing the commit
+- [ ] Add the project to PyPi and Scoop
