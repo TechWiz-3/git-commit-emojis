@@ -62,3 +62,11 @@ Shortcuts:
 `cl`     commit message defaults to: `🧹 CLEAN UP`  
 
 `in`     commit message defaults to: `🎉 INITIAL COMMIT`  
+
+## Support the project
+You can support the project  by adding the following text to the end of your `README.md` 
+```
+---
+### 🎉 Commit labels
+If you're interested in the commit labels used in this repo, check out the [git commit emoji](https://github.com/TechWiz-3/git-commit-emojis) project
+```
