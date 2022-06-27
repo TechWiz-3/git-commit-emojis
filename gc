@@ -116,6 +116,20 @@ def get_opts():
             # ensure the message isn't empty or non-existant
             # assign commit_message
             # return "message only", commit_message
+        elif arg in ("-e", "--extra", "--extra-menu"):
+            commit_message = ""
+            message = ""
+            get_arg_index = argv_index(arg)
+            try:
+                arg_after_e = argv[get_arg_index+1:]
+
+            except IndexError:
+                return "error", "You need to include your commit message after the -s or --strict option, you can do this directly after the option or use the -m <commit message> option"
+            # get next arg
+            # if next arg is m
+            #   get arg after that
+            # else get next arg and make it the message
+            # return "extra", message
         elif arg in ("-sa", "--show-all", "--showall"):
             show_all()
             return exit()
@@ -127,27 +141,45 @@ def select_menu():
     """Displays the select menu and returns the value to enter into the commit"""
     options = ["👌 Improvement", "📦 Addition", "📖 Documentation", "🐛 Bug-fix", "🔖 Version-tag", "🚪 Exit"]
     commit_label = ""
+    select_label = None
     for option in options:
         opt_no = options.index(option)
         print(f"{opt_no+1}) {option}")
-    select_label = int(input("Enter the number corresponding to which type of change you made: "))
-    if select_label == 1:
-        commit_label = "👌 IMPROVE: "
-    elif select_label == 2:
-        commit_label="📦 NEW: "
-    elif select_label == 3:
-        commit_label="📖 DOC: "
-    elif select_label == 4:
-        commit_label="🐛 FIX: "
-    elif select_label == 5:
-        commit_label="🔖 "
-    elif select_label == 6:
-        print("Exiting, have a nice day...")
+    select_label = input("Enter the number corresponding to which type of change you made: ")
+    try:  # attempt to convert input to an integer
+        select_label = int(select_label)
+    except ValueError:  # if a number isn't entered
+        # attempt to remove any accidentally mistyped special characters
+        from re import sub
+        remove = "[m'/\\\\]"  # characters that can be easily mistyped with an enter press
+        select_label = str(select_label)
+        select_label = sub(remove, '', select_label)
+        # after removing characters try converting back to integer
+        try:
+            select_label = int(select_label)
+        except ValueError:  # if the conversion doesn't work
+            print("🧙 This ain't fair, I'm a CLI tool not a wizard (yet). Please enter numbers not characters lol.")
+            exit()
+
+    select_menu_labels = {  # list each select menu number and it's corresponding commit label
+        1   :   "👌 IMPROVE: ",
+        2   :   "📦 NEW: ",
+        3   :   "📖 DOC: ",
+        4   :   "🐛 FIX: ",
+        5   :   "🔖 "
+    }
+    # loop through the menu number and label
+    for menu_number, label in select_menu_labels.items():
+        if select_label == menu_number:
+            commit_label = label
+            return commit_label
+    # if none of the label options were selected
+    if select_label == 6:  # exit option
+        print("Exiting have a nice day...")
         exit()
     else:
         print("Unrecognised menu option, exiting...")
         exit()
-    return commit_label
 
 
 def second_menu():
@@ -251,6 +283,10 @@ if __name__ == "__main__":
 
         elif typ == "strict":
             label = strict_menu()
+            system(f"git commit -m \"{label}{msg}\"")
+
+        elif typ == "extra":
+            label = second_menu()
             system(f"git commit -m \"{label}{msg}\"")
 
         elif typ == "shortcut":
