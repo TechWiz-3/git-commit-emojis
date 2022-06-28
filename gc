@@ -234,7 +234,7 @@ def strict_menu():
         commit_label = "🤖 TEST: "
     elif select_label == 7:
         commit_label = "‼️ BREAKING: "
-    elif select_label == 6:
+    elif select_label == 8:
         print("Exiting, have a nice day...")
         exit()
     else:
