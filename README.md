@@ -39,7 +39,7 @@ So I noticed that [this](https://github.com/msaaddev) programmer's commits alway
 My favourite was [emoji log](https://github.com/ahmadawais/Emoji-Log) (which this programmer used). Not only did it add emojis but it included simple labels that go with the emojis. However, emoji log only allows 5 labels, no more, no less, and for each label a custom command is made.  
 While this is an elegant solution, what if you want more than just 5 labels?
 
-This projects uses the stablity of emojified commit labels (from emoji-log), with an increased diversity of emojis and labels (gitmoji) while requiring no memorisation and keeping the CLI interface compact and neat.
+This project combines the stablity of emojified commit labels (emoji-log), with an increased diversity of emojis and labels (gitmoji) while requiring no memorisation and keeping the CLI interface compact and neat.
 
 Here are the emoji guides mentioned above, they are all great and this project wouldn't be possible without them so be sure to check them out:  
 * [Git command emoji gist](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)  
