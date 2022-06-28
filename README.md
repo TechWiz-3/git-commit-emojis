@@ -23,16 +23,28 @@ cp commit /usr/local/bin/<commit>
 chmod +x /usr/local/bin/<commit>
 ```
 
+**Path**
+```sh
+git clone https://github.com/TechWiz-3/git-commit-emojis.git
+chmod +x commit gc
+```
+Then go into your `~/.bash_profile` and add the line
+`export PATH=${PATH}:/driveorhome/ur_username/Desktop/filepath/git-commit-emojis`
+
+
 ## Usage
 
 ## The Story
 So I noticed that [this](https://github.com/msaaddev) programmer's commits always had really neat looking labels with emojis. I searched it up and found a number of repositories or gists talking about emojis for various sorts of commits.  
-However, I couldn't find ANY projects which automated the experience. Weird, right? [One](https://github.com/ahmadawais/Emoji-Log) project had a way to somewhat automate the experience by adding a function for each commit type. While a nice solution, I don't want to have to memorise the abbreviations/commands type of commit. Well no more, with this project, I can now label all my commits in mere seconds without having to memorise anything.  
-Later, I discovered gitmoji-cli, a very neat, if complicated implementation. Gitmoji however, misses one thing, it only adds emojis, but it provides no guide or automation for labelling commits with descriptive text like emoji log does 
+My favourite was [emoji log](https://github.com/ahmadawais/Emoji-Log) (which this programmer used). Not only did it add emojis but it included simple labels that go with the emojis. However, emoji log only allows 5 labels, no more, no less, and for each label a custom command is made.  
+While this is an elegant solution, what if you want more than just 5 labels?
+
+This projects uses the stablity of emojified commit labels (from emoji-log), with an increased diversity of emojis and labels (gitmoji) while requiring no memorisation and keeping the CLI interface compact and neat.
 
 Here are the emoji guides mentioned above, they are all great and this project wouldn't be possible without them so be sure to check them out:  
 * [Git command emoji gist](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)  
 * [Emoji-log](https://github.com/ahmadawais/Emoji-Log)  
+* [Gitmoji](https://github.com/topics/gitmoji)
 * [Git commit emoji](https://github.com/liuchengxu/git-commit-emoji-cn)  
 
 
