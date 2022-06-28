@@ -75,6 +75,14 @@ Shortcuts:
 
 `in`     commit message defaults to: `🎉 INITIAL COMMIT`  
 
+`ln`     commit message defaults to `🚨 FIX LINT WARNINGS`  
+
+### Other menus
+## Emoji-log menu
+`commit -s "msg"` or `commit --strict "msg"`
+## Extra menu
+Coming soon...
+
 ## Support the project
 You can support the project  by adding the following text to the end of your `README.md` 
 ```
