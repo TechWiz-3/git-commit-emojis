@@ -65,11 +65,22 @@ def get_opts():
             try:
                 shortcut = argv[get_arg_index+1]  # get the arguement after the option and assign it
             except IndexError:
-                return "error", "You didn't include the arguement for the shortcut type: -sh <shortcut value>"
+                    print("")
+                    print("Shortcut usage: commit -sh shortcut")
+                    print("")
+                    print("Shortcuts use pre-prepared commit messages for simple commit messages, refer to them by their assigned abbreviation")
+                    print("")
+                    print("List of shortcuts:")
+                    print("")
+                    print("Value                           Message")
+                    print("cl or clean                     🧹 CLEAN UPT")
+                    print("ty or typo                      ✏️  FIX TYPO")
+                    print("in or init or initial           🎉 INITIAL COMMIT")
+                    print("ln or lint or linter            🚨 FIX LINT WARNINGS")
+                    print("")
+                    return exit()
             else:
-                if shortcut == "":  # if the shortcut value is empty
-                    return "error", "Shortcut value cannot be empty"
-                elif shortcut == "ty" or shortcut == "typo":
+                if shortcut == "ty" or shortcut == "typo":
                     commit_message = "✏️ FIX TYPO"
                     return "shortcut", commit_message
                 elif shortcut == "cl" or shortcut == "clean":
@@ -82,7 +93,7 @@ def get_opts():
                     commit_message = "🚨 FIX LINT WARNINGS"
                     return "shortcut", commit_message
                 else:
-                    return "error", "Unrecognized shortcut usage"
+                    return "error", "Unrecognized shortcut usage. Use gc -sh for a list of available shortcuts"
         elif arg in ("-s", "--strict"):  # strict select menu option
             commit_message = ""  # label + user input message
             message = ""  # raw user input message
