@@ -130,17 +130,32 @@ def get_opts():
         elif arg in ("-e", "--extra", "--extra-menu"):
             commit_message = ""
             message = ""
-            get_arg_index = argv_index(arg)
+            get_arg_index = argv.index(arg)
             try:
-                arg_after_e = argv[get_arg_index+1:]
-
+                args_after_e = argv[get_arg_index+1:]
+                if args_after_e[0] == "-m":
+                    try:
+                        message = args_after_e[1]
+                    except IndexError:
+                        return "error", "You didn't include the arguement for the commit message like so: -m \"my commit message\""
+                    else:
+                        if not message:  # message is empty
+                            return "error", "Commit message cannot be empty"
+                        else:
+                            message = args_after_e[1:]
+                            for word in message:
+                                commit_message += f"{word} "
+                            commit_message = commit_message[:-1]
+                            return "extra", commit_message
+                elif not args_after_e:  # if empty
+                    return "error", "After the -s or --strict, add the commit message directly or with the -m switch"
+                else:
+                    message = args_after_e
+                    for word in message:
+                        commit_message += f"{word} "
+                    return "extra", commit_message
             except IndexError:
                 return "error", "You need to include your commit message after the -s or --strict option, you can do this directly after the option or use the -m <commit message> option"
-            # get next arg
-            # if next arg is m
-            #   get arg after that
-            # else get next arg and make it the message
-            # return "extra", message
         elif arg in ("-sa", "--show-all", "--showall"):
             show_all()
             return exit()
@@ -203,7 +218,7 @@ def second_menu():
         "🚪 Exit"
     ]
     for option in options:
-        opt_no = option.index(option)
+        opt_no = options.index(option)
         print(f"{opt_no + 1} {option}")
     select_label = int(input("Enter the number corresponding to which type of change you made: "))
     if select_label == 1:
@@ -212,9 +227,9 @@ def second_menu():
         commit_label = "🚚 MOVE: "
     elif select_label == 3:
         commit_label = "🙈 IGNORE: "
-    elif commit_label == 4:
+    elif select_label == 4:
         commit_label = "❌ REMOVE: "
-    elif commit_label == 5:
+    elif select_label == 5:
         print("Exiting, have a nice day...")
         exit()
     else:
