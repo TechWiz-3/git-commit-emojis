@@ -80,8 +80,9 @@ Shortcuts:
 ### Other menus
 #### Emoji-log menu
 `commit -s "msg"` or `commit --strict "msg"`
+
 #### Extra menu
-Coming soon...
+`commit -e "msg"` or `commit --extra "msg"`
 
 ## Support the project
 You can support the project  by adding the following text to the end of your `README.md` 
