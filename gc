@@ -29,7 +29,7 @@ def help():
         f"{BOLD}Advanced Usage:{RESET}"
         "\n\n"
         "ALTERNATE SELECT MENUS\nUsage:\ngc [select menu option] -m <commit message>"
-        "\n\n   -e, --extras    displays a select menu with other labels that are used less often"
+        "\n\n   -e, --extra    displays a select menu with other labels that are used less often"
         "\n\n   -s, --strict    displays a select menu strictly in line with the emoji log project by ahmad awais"
         "\n\nSHORTCUTS"
         "\n\nThe commit option can be omitted for shortcut commit messages:\n"
