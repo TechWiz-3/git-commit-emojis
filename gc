@@ -177,7 +177,13 @@ def select_menu():
     except ValueError:  # if a number isn't entered
         # attempt to remove any accidentally mistyped special characters
         from re import sub
-        remove = "[m'/\\\\]"  # characters that can be easily mistyped with an enter press
+        remove = "[m'/\]\\\\]"  # characters that can be easily mistyped with an enter press
+        # the reason there are 4 backslashes is because
+        # one backslash is the user input, another is
+        # added automatically, an extra backslash is
+        # added to each to show that we're using
+        # backslashes instead of escape characters
+        # yeah that was fun lmao
         select_label = str(select_label)
         select_label = sub(remove, '', select_label)
         # after removing characters try converting back to integer
@@ -220,22 +226,45 @@ def second_menu():
     for option in options:
         opt_no = options.index(option)
         print(f"{opt_no + 1} {option}")
-    select_label = int(input("Enter the number corresponding to which type of change you made: "))
-    if select_label == 1:
-        commit_label = "🔧 CONFIG: "
-    elif select_label == 2:
-        commit_label = "🚚 MOVE: "
-    elif select_label == 3:
-        commit_label = "🙈 IGNORE: "
-    elif select_label == 4:
-        commit_label = "❌ REMOVE: "
-    elif select_label == 5:
+    select_menu_labels = {
+        1   :   "🔧 CONFIG: ",
+        2   :   "🚚 MOVE: ",
+        3   :   "🙈 IGNORE: ",
+        4   :   "❌ REMOVE: "
+    }
+    select_label = input("Enter the number corresponding to which type of change you made: ")
+    try:  # attempt to convert input to an integer
+        select_label = int(select_label)
+    except ValueError:  # if a number isn't entered
+        # attempt to remove any accidentally mistyped special characters
+        from re import sub
+        remove = "[m'/\]\\\\]"  # characters that can be easily mistyped with an enter press
+        # the reason there are 4 backslashes is because
+        # one backslash is the user input, another is
+        # added automatically, an extra backslash is
+        # added to each to show that we're using
+        # backslashes instead of escape characters
+        # yeah that was fun lmao
+        select_label = str(select_label)
+        select_label = sub(remove, '', select_label)
+        # after removing characters try converting back to integer
+        try:
+            select_label = int(select_label)
+        except ValueError:  # if the conversion doesn't work
+            print("🧙 This ain't fair, I'm a CLI tool not a wizard (yet). Please enter numbers not characters lol.")
+            exit()
+
+    for menu_number, label in select_menu_labels.items():
+        if select_label == menu_number:
+            commit_label = label
+            return commit_label
+    # if this is running then the option used hasn't been recognised
+    if select_label == 5:
         print("Exiting, have a nice day...")
         exit()
     else:
         print("Unrecognised menu option, exiting...")
         exit()
-    return commit_label
 
 
 def strict_menu():
