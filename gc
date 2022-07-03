@@ -225,7 +225,7 @@ def second_menu():
     ]
     for option in options:
         opt_no = options.index(option)
-        print(f"{opt_no + 1} {option}")
+        print(f"{opt_no + 1}) {option}")
     select_menu_labels = {
         1   :   "🔧 CONFIG: ",
         2   :   "🚚 MOVE: ",
