@@ -6,3 +6,4 @@
 - [ ] Add the project to PyPi and Scoop
 - [ ] Add options for the command to add and/or push git changes
 - [ ] Add subcommand that undos last commit
+- [ ] Add a subcommmand that allows renaming of `git pull` merge commits with the label `🔀 MERGE:` and the command `git commit --amend`
