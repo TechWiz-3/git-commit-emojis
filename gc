@@ -40,6 +40,11 @@ def help():
         "in     commit message defaults to: 🎉 INITIAL COMMIT\n"
         "ln     commit message defaults to: 🚨 FIX LINT WARNINGS\n"
         "\n\n"
+        f"SPECIAL OPTIONS\n\n"
+        "commit <options> \"<commit message, quotation marks required>\" <special options>\n\n"
+        "       --add          git add\n"
+        "       --push         push after committing\n"
+        "\n\n"
     )
 
 def get_opts():
@@ -162,6 +167,33 @@ def get_opts():
         elif arg == "-h" or arg == "--help":  # help option
             help()  # display help message
             return exit()  # stop the rest of the program from running
+
+
+def get_special_opts():
+    """Get special options which come after the commit message"""
+    args = argv[1:]
+    pre_commit_commands = []
+    post_commit_commands = []
+    for arg in args:
+        if "--push" == arg:
+            post_commit_commands.append("--push")
+
+    return pre_commit_commands, post_commit_commands
+
+
+def commands_execution(label, message, special_opts: tuple =None):
+    precommit, postcommit = special_opts
+    if precommit:
+        pass
+    system(f"git commit -m \"{label}{message}\"")
+    # check that the command was excuted successfully
+    print(precommit)
+    print(postcommit)
+    if postcommit:
+        if "--push" in postcommit:
+            system("git push")
+
+
 
 def select_menu():
     """Displays the select menu and returns the value to enter into the commit"""
@@ -336,18 +368,19 @@ if __name__ == "__main__":
     if options == None:
         print("Incorrect usage. Refer to gc.py --help")
     else:
+        special_opts = get_special_opts()
         typ, msg = options
         if typ == "message only":
             label = select_menu()
-            system(f"git commit -m \"{label}{msg}\"")
+            commands_execution(label, msg, special_opts=special_opts)
 
         elif typ == "strict":
             label = strict_menu()
-            system(f"git commit -m \"{label}{msg}\"")
+            commands_execution(label, msg, special_opts=special_opts)
 
         elif typ == "extra":
             label = second_menu()
-            system(f"git commit -m \"{label}{msg}\"")
+            commands_execution(label, msg, special_opts=special_opts)
 
         elif typ == "shortcut":
             system(f"git commit -m \"{msg}\"")
