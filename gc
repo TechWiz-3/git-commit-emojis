@@ -196,7 +196,6 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
             get_arg_index = argv.index("--add")
             try:
                 args_after_add = argv[get_arg_index+1:]
-                print("args after add", args_after_add)
             except IndexError:
                 print("Please add the files you would like to add after the --add option. For more info see the --help special command")
                 exit()
