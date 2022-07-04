@@ -41,9 +41,10 @@ def help():
         "ln     commit message defaults to: 🚨 FIX LINT WARNINGS\n"
         "\n\n"
         f"SPECIAL OPTIONS\n\n"
-        "commit <options> \"<commit message, quotation marks required>\" <special options>\n\n"
+        "commit <special-options> <options> \"<commit message, quotation marks required>\"\n\n"
         "       --add          git add\n"
         "       --push         push after committing\n"
+        "\nSpecial options are placed before the menu and message related options"
         "\n\n"
     )
 
@@ -54,8 +55,9 @@ def get_opts():
             commit_message = ""
             # get the argument for the option
             get_arg_index = argv.index('-m')  # find the index number for the option
+            get_arg_index=get_arg_index+1
             try:
-                args_after_m = argv[get_arg_index+1:]
+                args_after_m = argv[get_arg_index:]
                 for msg_word in args_after_m:
                     commit_message += f"{msg_word} "
                 commit_message = commit_message[:-1]  # remove extra space from end
@@ -78,7 +80,7 @@ def get_opts():
                     print("List of shortcuts:")
                     print("")
                     print("Value                           Message")
-                    print("cl or clean                     🧹 CLEAN UPT")
+                    print("cl or clean                     🧹 CLEAN UP")
                     print("ty or typo                      ✏️  FIX TYPO")
                     print("in or init or initial           🎉 INITIAL COMMIT")
                     print("ln or lint or linter            🚨 FIX LINT WARNINGS")
@@ -127,11 +129,7 @@ def get_opts():
                     return "strict", commit_message
             except IndexError:
                 return "error", "You need to include your commit message after the -s or --strict option, you can do this directly after the option or use the -m <commit message> option"
-            # ensure next argument is -m
-            # get the emssage
-            # ensure the message isn't empty or non-existant
-            # assign commit_message
-            # return "message only", commit_message
+
         elif arg in ("-e", "--extra", "--extra-menu"):
             commit_message = ""
             message = ""
@@ -174,21 +172,49 @@ def get_special_opts():
     args = argv[1:]
     pre_commit_commands = []
     post_commit_commands = []
+    recognised_commands = ["--add", "--push"]
     for arg in args:
+        if arg in ("-m", "-e", "--extra", "-s", "--strict"): # args that have commit messages after them
+            break
         if "--push" == arg:
             post_commit_commands.append("--push")
+        if "--add" == arg:
+            pre_commit_commands.append("--add")
 
     return pre_commit_commands, post_commit_commands
 
 
-def commands_execution(label, message, special_opts: tuple =None):
+def commands_execution(label, message, special_opts: tuple = None, shortcut: bool = False):
     precommit, postcommit = special_opts
     if precommit:
-        pass
-    system(f"git commit -m \"{label}{message}\"")
+        if "--add" in precommit:
+            get_arg_index = argv.index("--add")
+            try:
+                args_after_add = argv[get_arg_index+1:]
+                print("args after add", args_after_add)
+            except IndexError:
+                print("Please add the files you would like to add after the --add option. For more info see the --help special command")
+                exit()
+            else:
+                # >>>>>  MUST REMEMBER TO COMPLETE THIS LIST<<<<<<
+                recognised_options = ["-m", "--push", "-e", "--extra"]
+                from os.path import exists
+                for arg in args_after_add:
+                    if arg in recognised_options:
+                        break
+                    file_exists = exists(arg)
+                    if file_exists:
+                        system(f"git add {arg}")
+                        # check on the execution status
+                        # of if Changes not staged for commit: in 
+                        # if exit code was 1, mothing is staged for commits
+    if shortcut:
+        # do shortcut stuff
+        system(f"git commit -m \"{message}\"")
+    else:
+        # do message stuff
+        system(f"git commit -m \"{label}{message}\"")
     # check that the command was excuted successfully
-    print(precommit)
-    print(postcommit)
     if postcommit:
         if "--push" in postcommit:
             system("git push")
@@ -384,6 +410,7 @@ if __name__ == "__main__":
 
         elif typ == "shortcut":
             system(f"git commit -m \"{msg}\"")
+            commands_execution(None, msg, shortcut=True, special_opts=special_opts)
 
         elif typ == "error":
             print(f"Error occured: {msg}")
