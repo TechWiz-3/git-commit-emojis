@@ -14,39 +14,44 @@ RESET = "\033[0m"
 
 def help():
     """Help command"""
-    print(
-        "\n"
-        "Git emoji/labeling tool created by Zac the Wise"
-        "\n\n"
-        f"{BOLD}Basic Usage:{RESET}"
-        "\n\n"
-        "gc -m <commit message>"
-        "\n\n"
-        "      -h, --help      shows this command"
-        "\n\n"
-        "      -m <\"message\">     commit message (required), quotation marks not required"
-        "\n\n"
-        f"{BOLD}Advanced Usage:{RESET}"
-        "\n\n"
-        "ALTERNATE SELECT MENUS\nUsage:\ngc [select menu option] -m <commit message>"
-        "\n\n   -e, --extra    displays a select menu with other labels that are used less often"
-        "\n\n   -s, --strict    displays a select menu strictly in line with the emoji log project by ahmad awais"
-        "\n\nSHORTCUTS"
-        "\n\nThe commit option can be omitted for shortcut commit messages:\n"
-        "\n\t-sh <shortcut>      puts the commit message for you as the value of 'shortcut'\n\n"
-        "Available shortcuts:\n\n"
-        "ty     commit message defaults to: ✏️ FIX TYPO\n"
-        "cl     commit message defaults to: 🧹 CLEAN UP\n"
-        "in     commit message defaults to: 🎉 INITIAL COMMIT\n"
-        "ln     commit message defaults to: 🚨 FIX LINT WARNINGS\n"
-        "\n\n"
-        f"SPECIAL OPTIONS\n\n"
-        "commit <special-options> <options> \"<commit message, quotation marks required>\"\n\n"
-        "       --add          git add\n"
-        "       --push         push after committing\n"
-        "\nSpecial options are placed before the menu and message related options"
-        "\n\n"
-    )
+    print("")
+    print("Git emoji/labeling tool created by Zac the Wise")
+    print("")
+    print(f"{BOLD}Basic Usage:{RESET}")
+    print("")
+    print("commit -m <commit message>")
+    print("")
+    print("      -h, --help              shows this command")
+    print("")
+    print("      -m \"<message>\"        commit message (required), quotation marks not required")
+    print("")
+    print(f"{BOLD}Advanced Usage:{RESET}")
+    print("")
+    print("ALTERNATE SELECT MENUS\nUsage:\ngc [select menu option] -m <commit message>")
+    print("")
+    print("   -e, --extra    displays a select menu with other labels that are used less often")
+    print("")
+    print("   -s, --strict    displays a select menu strictly in line with the emoji log project by ahmad awais")
+    print("")
+    print("SHORTCUTS")
+    print("The commit option can be omitted for shortcut commit messages:\n")
+    print("commit -sh <shortcut>      puts the commit message for you as the value of 'shortcut'")
+    print("")
+    print("Available shortcuts:")
+    print("ty     commit message defaults to: ✏️ FIX TYPO")
+    print("cl     commit message defaults to: 🧹 CLEAN UP")
+    print("in     commit message defaults to: 🎉 INITIAL COMMIT")
+    print("ln     commit message defaults to: 🚨 FIX LINT WARNINGS")
+    print("")
+    print(f"SPECIAL OPTIONS\n")
+    print("commit [special-options] [options] \"<commit message>\"")
+    print("")
+    print("       --add <file1> ...     git  add specified files before committing")
+    print("       --push                push after committing\n")
+    print("Special options are placed before the menu and message related options")
+    print("")
+    print("")
+
 
 def get_opts():
     """Get cli options/arguements"""
