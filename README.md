@@ -2,10 +2,10 @@
 
 ![Image](https://img.shields.io/github/license/TechWiz-3/git-commit-emojis?color=blue&label=license&logo=gnu&style=flat-square)
 ![Image](https://img.shields.io/badge/python-3.9-informational?style=flat-square&logo=python&logoColor=yellow)
-![Image](https://img.shields.io/github/commit-activity/m/TechWiz-3/git-commit-emojis?color=yellowgreen&logo=git&style=flat-square)  
-![Image](https://img.shields.io/github/stars/TechWiz-3/git-commit-emojis?color=green&label=STARS&style=flat-square)
-![Image](https://img.shields.io/github/issues/TechWiz-3/git-commit-emojis?color=red&label=ISSUES&style=flat-square)
-![Image](https://img.shields.io/github/issues-pr/TechWiz-3/git-commit-emojis?color=blueviolet&label=PULL%20REQUESTS&style=flat-square)
+![Image](https://img.shields.io/github/commit-activity/m/TechWiz-3/git-commit-emojis?color=yellowgreen&logo=git&style=flat-square)
+![Image](https://img.shields.io/github/stars/TechWiz-3/git-commit-emojis?color=green&label=stars&style=flat-square)
+![Image](https://img.shields.io/github/issues/TechWiz-3/git-commit-emojis?color=red&label=issues&style=flat-square)
+![Image](https://img.shields.io/github/issues-pr/TechWiz-3/git-commit-emojis?color=blueviolet&label=pull%20requests&style=flat-square)
 
 A simple cross platform python script that automates easy labelling of git commits with descriptive emojis and text. Issues, PRs and suggestions more than welcome.
 
