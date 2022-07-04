@@ -12,46 +12,6 @@ from os import system
 BOLD = "\u001b[1m"
 RESET = "\033[0m"
 
-def help():
-    """Help command"""
-    print("")
-    print("Git emoji/labeling tool created by Zac the Wise")
-    print("")
-    print(f"{BOLD}Basic Usage:{RESET}")
-    print("")
-    print("commit -m <commit message>")
-    print("")
-    print("      -h, --help              shows this command")
-    print("")
-    print("      -m \"<message>\"        commit message (required), quotation marks not required")
-    print("")
-    print(f"{BOLD}Advanced Usage:{RESET}")
-    print("")
-    print("ALTERNATE SELECT MENUS\nUsage:\ngc [select menu option] -m <commit message>")
-    print("")
-    print("   -e, --extra    displays a select menu with other labels that are used less often")
-    print("")
-    print("   -s, --strict    displays a select menu strictly in line with the emoji log project by ahmad awais")
-    print("")
-    print("SHORTCUTS")
-    print("The commit option can be omitted for shortcut commit messages:\n")
-    print("commit -sh <shortcut>      puts the commit message for you as the value of 'shortcut'")
-    print("")
-    print("Available shortcuts:")
-    print("ty     commit message defaults to: ✏️ FIX TYPO")
-    print("cl     commit message defaults to: 🧹 CLEAN UP")
-    print("in     commit message defaults to: 🎉 INITIAL COMMIT")
-    print("ln     commit message defaults to: 🚨 FIX LINT WARNINGS")
-    print("")
-    print(f"SPECIAL OPTIONS\n")
-    print("commit [special-options] [options] \"<commit message>\"")
-    print("")
-    print("       --add <file1> ...     git  add specified files before committing")
-    print("       --push                push after committing\n")
-    print("Special options are placed before the menu and message related options")
-    print("")
-    print("")
-
 
 def get_opts():
     """Get cli options/arguements"""
@@ -77,20 +37,8 @@ def get_opts():
             try:
                 shortcut = argv[get_arg_index+1]  # get the arguement after the option and assign it
             except IndexError:
-                    print("")
-                    print("Shortcut usage: commit -sh shortcut")
-                    print("")
-                    print("Shortcuts use pre-prepared commit messages for simple commit messages, refer to them by their assigned abbreviation")
-                    print("")
-                    print("List of shortcuts:")
-                    print("")
-                    print("Value                           Message")
-                    print("cl or clean                     🧹 CLEAN UP")
-                    print("ty or typo                      ✏️  FIX TYPO")
-                    print("in or init or initial           🎉 INITIAL COMMIT")
-                    print("ln or lint or linter            🚨 FIX LINT WARNINGS")
-                    print("")
-                    return exit()
+                    from help_cmds import Help
+                    Help(cmd="shortcuts")  # displays help message from help_cmds.py
             else:
                 if shortcut == "ty" or shortcut == "typo":
                     commit_message = "✏️ FIX TYPO"
@@ -105,7 +53,7 @@ def get_opts():
                     commit_message = "🚨 FIX LINT WARNINGS"
                     return "shortcut", commit_message
                 else:
-                    return "error", "Unrecognized shortcut usage. Use gc -sh for a list of available shortcuts"
+                    return "error", "Unrecognized shortcut usage. Use commit -sh for a list of available shortcuts"
         elif arg in ("-s", "--strict"):  # strict select menu option
             commit_message = ""  # label + user input message
             message = ""  # raw user input message
@@ -168,7 +116,8 @@ def get_opts():
             show_all()
             return exit()
         elif arg == "-h" or arg == "--help":  # help option
-            help()  # display help message
+            from help_cmds import Help
+            Help(cmd="regular")  # displays help message from help_cmds.py
             return exit()  # stop the rest of the program from running
 
 
@@ -396,7 +345,8 @@ if __name__ == "__main__":
 
     options = get_opts()
     if options == None:
-        print("Incorrect usage. Refer to gc.py --help")
+        print("Incorrect usage. Refer to commit --help")
+        print("")
     else:
         special_opts = get_special_opts()
         typ, msg = options
