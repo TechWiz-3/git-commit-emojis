@@ -123,12 +123,18 @@ def get_opts():
 
 def get_special_opts():
     """Get special options which come after the commit message"""
+    # special options are:
+    # --push, --add and --label
     args = argv[1:]
     pre_commit_commands = []
     post_commit_commands = []
     recognised_commands = ["--add", "--push"]
     for arg in args:
         if arg in ("-m", "-e", "--extra", "-s", "--strict"): # args that have commit messages after them
+            break
+        if arg in ("-l", "--label", "--get-label"):
+            # break since push and add are not available with this option
+            pre_commit_commands.append("--label")
             break
         if "--push" == arg:
             post_commit_commands.append("--push")
@@ -139,8 +145,16 @@ def get_special_opts():
 
 
 def commands_execution(label, message, special_opts: tuple = None, shortcut: bool = False):
-    precommit, postcommit = special_opts
-    if precommit:
+    precommit, postcommit = special_opts  # returns a list for each, if no options then they're empty
+    if precommit:  # if precommit isn't empty
+        if "--label" in precommit:
+            # return with the commit label and exit
+            print("")
+            print(f"{label}{message}")
+            print("")
+            print("Exiting, have a happy commit...")
+            print("")
+            exit()
         if "--add" in precommit:
             get_arg_index = argv.index("--add")
             try:
@@ -150,7 +164,7 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
                 exit()
             else:
                 # >>>>>  MUST REMEMBER TO COMPLETE THIS LIST<<<<<<
-                recognised_options = ["-m", "--push", "-e", "--extra"]
+                recognised_options = ["-m", "--push", "-e", "--extra", "-sh", "-s", "--strict"]
                 from os.path import exists
                 for arg in args_after_add:
                     if arg in recognised_options:
@@ -237,12 +251,7 @@ def second_menu():
     for option in options:
         opt_no = options.index(option)
         print(f"{opt_no + 1}) {option}")
-    select_menu_labels = {
-        1   :   "🔧 CONFIG: ",
-        2   :   "🚚 MOVE: ",
-        3   :   "🙈 IGNORE: ",
-        4   :   "❌ REMOVE: "
-    }
+
     select_label = input("Enter the number corresponding to which type of change you made: ")
     try:  # attempt to convert input to an integer
         select_label = int(select_label)
@@ -265,6 +274,12 @@ def second_menu():
             print("🧙 This ain't fair, I'm a CLI tool not a wizard (yet). Please enter numbers not characters lol.")
             exit()
 
+    select_menu_labels = {
+        1   :   "🔧 CONFIG: ",
+        2   :   "🚚 MOVE: ",
+        3   :   "🙈 IGNORE: ",
+        4   :   "❌ REMOVE: "
+    }
     for menu_number, label in select_menu_labels.items():
         if select_label == menu_number:
             commit_label = label
@@ -285,28 +300,53 @@ def strict_menu():
     for option in options:
         opt_no = options.index(option)
         print(f"{opt_no+1}) {option}")
-    select_label = int(input("Enter the number corresponding to which type of change you made: "))
-    if select_label == 1:
-        commit_label = "👌 IMPROVE: "
-    elif select_label == 2:
-        commit_label = "📦 NEW: "
-    elif select_label == 3:
-        commit_label = "📖 DOC: "
-    elif select_label == 4:
-        commit_label="🐛 FIX: "
-    elif select_label == 5:
-        commit_label = "🚀 RELEASE:  "
-    elif select_label == 6:
-        commit_label = "🤖 TEST: "
-    elif select_label == 7:
-        commit_label = "‼️ BREAKING: "
-    elif select_label == 8:
+    select_label = input("Enter the number corresponding to which type of change you made: ")
+
+    try:
+        select_label = int(select_label)
+    except ValueError:
+        # attempt to remove any accidentally mistyped special characters
+        from re import sub
+        remove = "[;m'/\]\\\\]"  # characters that can be easily mistyped with an enter press
+        # the reason there are 4 backslashes is because
+        # one backslash is the user input, another is
+        # added automatically, an extra backslash is
+        # added to each to show that we're using
+        # backslashes instead of escape characters
+        # yeah that was fun lmao
+        select_label = str(select_label)
+        select_label = sub(remove, '', select_label)
+        # after removing characters try converting back to integer
+        try:
+            select_label = int(select_label)
+        except ValueError:  # if the conversion doesn't work
+            print("🧙 This ain't fair, I'm a CLI tool not a wizard (yet). Please enter numbers not characters lol.")
+            exit()
+
+    select_menu_labels = {
+            1   :   "👌 IMPROVE: ",
+            2   :   "📦 NEW: ",
+            3   :   "📖 DOC: ",
+            4   :   "🐛 FIX: ",
+            5   :   "🚀 RELEASE: ",
+            6   :   "🤖 TEST: ",
+            7   :   "‼️ BREAKING: "
+        }
+
+    for menu_number, label in select_menu_labels.items():
+         # if entered value corresponds to dict item number
+        if select_label == menu_number:
+            # assign the label to be the label
+            # corresponding to the related number
+            commit_label = label
+            return commit_label
+    # if this is running then the option used hasn't been recognised
+    if select_label == 8:
         print("Exiting, have a nice day...")
         exit()
     else:
         print("Unrecognised menu option, exiting...")
         exit()
-    return commit_label
 
 
 def show_all():
@@ -349,7 +389,7 @@ if __name__ == "__main__":
         print("")
     else:
         special_opts = get_special_opts()
-        typ, msg = options
+        typ, msg = options  # assign the results of get_opts
         if typ == "message only":
             label = select_menu()
             commands_execution(label, msg, special_opts=special_opts)
@@ -363,7 +403,6 @@ if __name__ == "__main__":
             commands_execution(label, msg, special_opts=special_opts)
 
         elif typ == "shortcut":
-            system(f"git commit -m \"{msg}\"")
             commands_execution(None, msg, shortcut=True, special_opts=special_opts)
 
         elif typ == "error":
