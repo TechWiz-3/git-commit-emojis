@@ -8,7 +8,7 @@ PRs and issues of all sorts are welcome, here are some guides to help you out.
 
 1. Refer to [`HACKING.md`](HACKING.md) for information on the inner-workings of the project. If you're still unsure about anything open an Issue.
 2. If you're unure you to help, check out [backlogs.md](backlogs.md) which contains plenty of new features and tasks that need to be imlemented.
- * If you would like to gain approval or discuss how you'll tackle the feature in a logical sense, open and issue.
+  * If you would like to gain approval or discuss how you'll tackle the feature in a logical sense, open and issue.
 3. For commit message, please do your best to use the project's commit labelling techniques to ensure uniformity
 4. Name the pull request with the same labelling as commits :+1:
 5. Include what you changed, but also why. It'll help give context and help your contributions make more sense.
