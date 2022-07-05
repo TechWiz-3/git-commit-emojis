@@ -8,4 +8,4 @@
 - [ ] Add subcommand that undos last commit
 - [ ] Add a subcommmand that allows renaming of `git pull` merge commits with the label `🔀 MERGE:` and the command `git commit --amend`
 - [ ] Write tests using pytest
-- [ ] Command that outputs the commit message complete with label, without executing any git commands - ``--show-label`
+- [ ] Command that outputs the commit message complete with label, without executing any git commands - ``--show-label``
