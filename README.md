@@ -9,6 +9,8 @@
 
 A simple cross platform python script that automates easy labelling of git commits with descriptive emojis and text. Issues, PRs and suggestions more than welcome.
 
+![Image](./screenshots/banner.png)
+
 ## About
 We all like a bit of extra color and spice to our boring old commit messages, this not only adds that but also adds information about the commit.
 
