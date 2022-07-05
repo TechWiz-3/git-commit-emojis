@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # Self added
-.swp
+*.swp
+.DS_store
