@@ -83,8 +83,23 @@ Shortcuts:
 #### Emoji-log menu
 `commit -s "msg"` or `commit --strict "msg"`
 
+![Image](./screenshots/strict_menu.png)
+👌 Improvement = `👌 IMPROVE: <commit message>`
+📦 Addition = `📦 NEW: commit message`
+📖 Documentation = `📖 DOC: commit-message`
+🐛 Bug-fix = `🐛 FIX: commit-message`
+🚀 Release = `🚀 RELEASE: commit-message`
+🤖 Test = `🤖 TEST: commit-message`
+‼️  Breaking = `‼️ BREAKING: commit-message`
+
 #### Extra menu
 `commit -e "msg"` or `commit --extra "msg"`
+
+![Image](./screenshots/extra_menu.png)
+🔧 Config files = `🔧 CONFIG: <commit message>`
+🚚 Move files = `🚚 MOVE: <commit message>`
+🙈 Ignore files = `🙈 IGNORE: <commit message>`
+❌ Remove files = `❌ REMOVE: <commit message>`
 
 ## Support the project
 You can support the project  by adding the following text to the end of your `README.md` 
