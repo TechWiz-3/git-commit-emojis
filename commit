@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/Users/Peregrine/Desktop/Projects/git-commit-emojis/gc $*
+/Users/Peregrine/Desktop/Projects/git-commit-emojis/gc "$@"
