@@ -1,11 +1,11 @@
 # Git Commit Emojis
 
-![Image](https://img.shields.io/github/license/TechWiz-3/git-commit-emojis?color=5D3FD3&label=license&logo=gnu&style=flat-square)
-![Image](https://img.shields.io/badge/python-3.9-informational?style=flat-square&color=5D3FD3&logo=python)
-![Image](https://img.shields.io/github/commit-activity/m/TechWiz-3/git-commit-emojis?color=643de0&logo=git&style=flat-square)
-![Image](https://img.shields.io/github/stars/TechWiz-3/git-commit-emojis?color=b53de0&label=stars&style=flat-square)
-![Image](https://img.shields.io/github/issues/TechWiz-3/git-commit-emojis?color=9f43e6&label=issues&style=flat-square)
-![Image](https://img.shields.io/github/issues-pr/TechWiz-3/git-commit-emojis?color=blueviolet&label=pull%20requests&style=flat-square)
+![Image](https://img.shields.io/github/license/TechWiz-3/git-commit-emojis?color=5D3FD3&label=license&logo=gnu&style=flat-square&logoColor=C7EAFC)
+![Image](https://img.shields.io/badge/python-3.9-informational?style=flat-square&color=5D3FD3&logo=python&logoColor=C7EAFC)
+![Image](https://img.shields.io/github/commit-activity/m/TechWiz-3/git-commit-emojis?color=643de0&logo=git&style=flat-square&logoColor=C7EAFC)
+![Image](https://img.shields.io/github/stars/TechWiz-3/git-commit-emojis?color=b53de0&label=stars&style=flat-square&logoColor=C7EAFC)
+![Image](https://img.shields.io/github/issues/TechWiz-3/git-commit-emojis?color=9f43e6&label=issues&style=flat-square&logoColor=C7EAFC)
+![Image](https://img.shields.io/github/issues-pr/TechWiz-3/git-commit-emojis?color=blueviolet&label=pull%20requests&style=flat-square&logoColor=C7EAFC)
 
 ![Image](./screenshots/banner.png)
 
