@@ -38,7 +38,7 @@ Then go into your `~/.bash_profile` and add the line
 
 ## The Story
 So I noticed that [this](https://github.com/msaaddev) programmer's commits always had really neat looking labels with emojis. I searched it up and found a number of repositories or gists talking about emojis for various sorts of commits.  
-My favourite was [emoji log](https://github.com/ahmadawais/Emoji-Log) (which this programmer used). Not only did it add emojis but it included simple labels that go with the emojis. However, emoji log only allows 5 labels, no more, no less, and for each label a custom command is made.  
+My favourite was [emoji log](https://github.com/ahmadawais/Emoji-Log) (which [msaaddev](https://github.com/msaaddev) uses). Not only does it add emojis but it includes simple labels that go with the emojis. However, emoji log only allows 5 labels, no more, and for each label a custom command is made.  
 While this is an elegant solution, what if you want more than just 5 labels?
 
 This project combines the stablity of emojified commit labels (emoji-log), with an increased diversity of emojis and labels (gitmoji) while requiring no memorisation and keeping the CLI interface compact and neat.
