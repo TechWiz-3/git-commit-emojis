@@ -124,7 +124,7 @@ def get_opts():
 def get_special_opts():
     """Get special options which come after the commit message"""
     # special options are:
-    # --push, --add and --label
+    # --push, --add. --label --add-push
     args = argv[1:]
     pre_commit_commands = []
     post_commit_commands = []
@@ -136,6 +136,11 @@ def get_special_opts():
             # break since push and add are not available with this option
             pre_commit_commands.append("--label")
             break
+        if arg in ("-ap", "--add-push"):
+            # for convenience, this command will be passed
+            # in with the pre and post commit commands
+            pre_commit_commands.append("--add-push")
+            post_commit_commands.append("--add-push")
         if "--push" == arg:
             post_commit_commands.append("--push")
         if "--add" == arg:
@@ -155,6 +160,17 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
             print("Exiting, have a happy commit...")
             print("")
             exit()
+        if "--add-push" in precommit:
+            get_arg_index = argv.index("--add-push")
+            try:
+                args_after_add = argv[get_arg_index+1:]
+            except IndexError:
+                print("Please add the files you would like to add after the --add option. For more info see the --help special command")
+                exit()
+            else:
+                from utils import CommitUtils
+                CommitUtils.add_files(args_after_add)
+
         if "--add" in precommit:
             get_arg_index = argv.index("--add")
             try:
@@ -163,27 +179,8 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
                 print("Please add the files you would like to add after the --add option. For more info see the --help special command")
                 exit()
             else:
-                # >>>>>  MUST REMEMBER TO COMPLETE THIS LIST<<<<<<
-                recognised_options = ["-m", "--push", "-e", "--extra", "-sh", "-s", "--strict"]
-                from os.path import exists
-                for arg in args_after_add:
-                    if arg in recognised_options:
-                        break
-                    file_exists = exists(arg)
-                    if file_exists:
-                        system(f"git add {arg}")
-                    else:
-                        usr_opt = input(f"Error, {arg} file not found. Continue? [y/n] ")
-                        if (usr_opt.lower() in ( "y", "yes", "")):
-                            pass
-                        else:
-                            print("Exiting, have a nice day...")
-                            print("")
-                            exit()
-
-                        # check on the execution status
-                        # of if Changes not staged for commit: in 
-                        # if exit code was 1, mothing is staged for commits
+                from utils import CommitUtils
+                CommitUtils.add_files(args_after_add)
     if shortcut:
         # do shortcut stuff
         system(f"git commit -m \"{message}\"")
@@ -192,9 +189,8 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
         system(f"git commit -m \"{label}{message}\"")
     # check that the command was excuted successfully
     if postcommit:
-        if "--push" in postcommit:
+        if "--push" in postcommit or "--add-push" in postcommit:
             system("git push")
-
 
 
 def select_menu():
