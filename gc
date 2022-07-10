@@ -172,6 +172,15 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
                     file_exists = exists(arg)
                     if file_exists:
                         system(f"git add {arg}")
+                    else:
+                        usr_opt = input(f"Error, {arg} file not found. Continue? [y/n] ")
+                        if (usr_opt.lower() in ( "y", "yes", "")):
+                            pass
+                        else:
+                            print("Exiting, have a nice day...")
+                            print("")
+                            exit()
+
                         # check on the execution status
                         # of if Changes not staged for commit: in 
                         # if exit code was 1, mothing is staged for commits
