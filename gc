@@ -161,7 +161,10 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
             print("")
             exit()
         if "--add-push" in precommit:
-            get_arg_index = argv.index("--add-push")
+            try:
+                get_arg_index = argv.index("--add-push")
+            except ValueError:
+                get_arg_index = argv.index("-ap")
             try:
                 args_after_add = argv[get_arg_index+1:]
             except IndexError:
