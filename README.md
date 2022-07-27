@@ -20,7 +20,7 @@ Planning on putting the project on pypi and scoop soon
 **Simple**
 ```sh
 # <commit> = name you wish to give the command (I recommend gc or commit)
-git clone https://github.com/TechWiz-3/git-commit-emojis.git ~
+git clone https://github.com/TechWiz-3/git-commit-emojis.git ~/git-commit-emojis
 cp ~/git-commit-emojis/commit /usr/local/bin/<commit>
 chmod +x /usr/local/bin/<commit>
 ```
