@@ -85,12 +85,12 @@ Shortcuts:
 
 ![Image](./screenshots/strict_menu.png)  
 👌 Improvement = `👌 IMPROVE: <commit message>`  
-📦 Addition = `📦 NEW: commit message`  
-📖 Documentation = `📖 DOC: commit-message`  
-🐛 Bug-fix = `🐛 FIX: commit-message`  
-🚀 Release = `🚀 RELEASE: commit-message`  
-🤖 Test = `🤖 TEST: commit-message`  
-‼️  Breaking = `‼️ BREAKING: commit-message`  
+📦 Addition = `📦 NEW: <commit message>`  
+📖 Documentation = `📖 DOC: <commit message>`  
+🐛 Bug-fix = `🐛 FIX: <commit message>`  
+🚀 Release = `🚀 RELEASE: <commit message>`  
+🤖 Test = `🤖 TEST: <commit message>`  
+‼️  Breaking = `‼️ BREAKING: <commit message>`  
 
 #### Extra menu
 `commit -e "msg"` or `commit --extra "msg"`
