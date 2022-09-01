@@ -3,7 +3,6 @@
 # help commands without clogging the main file.
 
 class Help():
-
     BOLD = "\u001b[1m"
     RESET = "\033[0m"
 
@@ -65,6 +64,18 @@ class Help():
         print("  -l,  --get-label -m <commit message>     returns the commit",
               "label without commiting anything\n",
               "                                          (can be used anywhere including  non-git repos)")
+        print("")
+        print("LABEL ARGUEMENTS")
+        print("Avoid the main select menu by specifying the label in the arguements")
+        print("Usage:")
+        print("commit --<label name> [other options] -m \"message\"")
+        print("commit -<main select menu number> [other options] -m \"message\"")
+        print("")
+        print("Examples:")
+        print("  commit -1 -add README.md -m \"README\"")
+        print("  commit --version --push . -m \"v3.0.0\"")
+        print("  commit --improve -m \"the world\"")
+        print("  commit -4 -m \"the fact that you're dehydrated rn\"")
         print("")
         print("")
         print("Please submit any issues or bugs to https://github.com/TechWiz-3/git-commit-emojis/issues")

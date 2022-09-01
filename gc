@@ -123,9 +123,12 @@ def get_opts():
 
 def get_special_opts():
     """Get special options which come after the commit message"""
+    label_controller = None
     # special options are:
     # --push, --add. --label --add-push
     args = argv[1:]
+    good_lbl_cntrllrs = ["--improve", "--new", "--doc", "--fix", "--release"]
+    num_lbl_cntrllrs = ["-1", "-2", "-3", "-4", "-5"]
     pre_commit_commands = []
     post_commit_commands = []
     recognised_commands = ["--add", "--push"]
@@ -145,12 +148,18 @@ def get_special_opts():
             post_commit_commands.append("--push")
         if "--add" == arg:
             pre_commit_commands.append("--add")
+        if arg in good_lbl_cntrllrs:
+            from label_controllers import Label
+            label_controller = Label.get_msg(arg)
+        if arg in num_lbl_cntrllrs:
+            from label_controllers import Label
+            label_controller = Label.get_msg_from_num(arg)
 
-    return pre_commit_commands, post_commit_commands
+    return pre_commit_commands, post_commit_commands, label_controller
 
 
 def commands_execution(label, message, special_opts: tuple = None, shortcut: bool = False):
-    precommit, postcommit = special_opts  # returns a list for each, if no options then they're empty
+    precommit, postcommit, label_controller = special_opts  # returns a list for each, if no options then they're empty
     if precommit:  # if precommit isn't empty
         if "--label" in precommit:
             # return with the commit label and exit
@@ -398,6 +407,9 @@ if __name__ == "__main__":
     else:
         special_opts = get_special_opts()
         typ, msg = options  # assign the results of get_opts
+        if special_opts[2]:
+            commands_execution(special_opts[2], msg, special_opts=special_opts)
+            exit()  # exit
         if typ == "message only":
             label = select_menu()
             commands_execution(label, msg, special_opts=special_opts)
