@@ -162,6 +162,10 @@ def commands_execution(label, message, special_opts: tuple = None, shortcut: boo
     precommit, postcommit, label_controller = special_opts  # returns a list for each, if no options then they're empty
     if precommit:  # if precommit isn't empty
         if "--label" in precommit:
+            # copy to clipboard
+            from utils import Clipboard
+            c = Clipboard()
+            c.copy(f"{label}{message}")
             # return with the commit label and exit
             print("")
             print(f"{label}{message}")

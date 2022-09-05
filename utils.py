@@ -1,5 +1,7 @@
 from os.path import exists
 from os import system
+import platform
+import subprocess
 
 class CommitUtils:
 
@@ -27,3 +29,13 @@ class CommitUtils:
                     print("")
                     exit()
 
+
+class Clipboard:
+
+    def __init__(self):
+        os = platform.system()
+        self.os = os
+
+    def copy(self, payload):
+        if self.os == "Darwin":
+            subprocess.run("pbcopy", universal_newlines=True, input=payload)
