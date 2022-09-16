@@ -6,13 +6,14 @@ class Label:
         self.message = None
         bindings = {
         "--improve" :   "👌 IMPROVE: ",
-        "--add"     :   "📦 NEW: ",
-        "--docs"    :   " 📖 DOC: ",
+        "--new"     :   "📦 NEW: ",
+        "--doc"    :   " 📖 DOC: ",
         "--fix"     :   "🐛 FIX: ",
         "--release" :   "🔖 "
         }
 
         for key, value in bindings.items():
+            print(key,value)
             if self.label == key:
                 self.message = value
 
