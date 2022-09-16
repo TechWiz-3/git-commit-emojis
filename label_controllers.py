@@ -13,7 +13,6 @@ class Label:
         }
 
         for key, value in bindings.items():
-            print(key,value)
             if self.label == key:
                 self.message = value
 
